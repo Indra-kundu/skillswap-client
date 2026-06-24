@@ -35,9 +35,11 @@ const Banner = () => {
                     className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
                 >
                     {/* গ্রেডিয়েন্ট বাটন */}
-                    <Button as={Link} href="/post-task" className="px-8 font-semibold bg-gradient-to-r from-pink-500 to-violet-600 text-white" radius="full" size="lg">
-                        Post a Task
-                    </Button>
+                    <Link href="/dashboard/client/postTask">
+                        <Button className="px-8 font-semibold bg-gradient-to-r from-pink-500 to-violet-600 text-white" radius="full" size="lg">
+                            Post a Task
+                        </Button>
+                    </Link>
                     <Button as={Link} href="/tasks" variant="bordered" radius="full" size="lg" className="px-8 text-white border-white hover:bg-white/10">
                         Browse Tasks
                     </Button>

@@ -1,11 +1,19 @@
+"use client"
+
 import Link from "next/link";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { FaFacebook, FaXTwitter } from "react-icons/fa6";
 import { BsInstagram } from "react-icons/bs";
 import { LiaLinkedin } from "react-icons/lia";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
+
+    const pathname = usePathname()
+    if (pathname.includes('dashboard')) {
+        return null;
+    }
 
     return (
         <footer className="mt-16 border-t border-white/10 bg-[#1e1b2e] text-slate-200">

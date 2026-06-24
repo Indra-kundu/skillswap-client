@@ -10,7 +10,7 @@ import {
     DropdownTrigger,
 } from "@heroui/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { BiLogOut } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
 import { MdDashboard } from "react-icons/md";
@@ -20,6 +20,11 @@ const Navbar = () => {
 
     const { data: session, isLoading } = authClient.useSession();
     const user = session?.user ?? null;
+
+    const pathname = usePathname()
+    if (pathname.includes('dashboard')) {
+        return null;
+    }
 
     const handleSignOut = async () => {
         try {
@@ -50,13 +55,12 @@ const Navbar = () => {
                 {/* Links */}
                 <nav className="hidden md:flex items-center gap-6 text-white">
                     <Link href="/">Home</Link>
-                    <Link href="/tasks">Browse Tasks</Link>
+                    <Link href="/dashboard/client/myTask">Browse Tasks</Link>
                     <Link href="/freelancers">Browse Freelancers</Link>
                 </nav>
 
                 {/* Auth */}
                 <div className="flex items-center gap-4 text-white">
-
                     {/* loading state fix */}
                     {isLoading ? (
                         <div className="text-white/50 text-sm">Loading...</div>
@@ -74,11 +78,13 @@ const Navbar = () => {
                             </Link>
                         </>
                     ) : (
+
                         <Dropdown placement="bottom-end">
                             <DropdownTrigger>
                                 <Avatar
                                     src={user.image || ""}
-                                    className="border-2 "
+                                    className="transition-transform border-pink-500 cursor-pointer"
+                                // className="border-2 "
                                 />
                             </DropdownTrigger>
 
@@ -91,7 +97,7 @@ const Navbar = () => {
 
                                 <DropdownItem
                                     key="dashboard"
-                                    href={`/dashboard/${user.role || "client"}`}
+                                    href={`/dashboard/${user?.role}`}
                                     startContent={<MdDashboard />}
                                 >
                                     Dashboard
@@ -116,6 +122,8 @@ const Navbar = () => {
 
                             </DropdownMenu>
                         </Dropdown>
+
+
                     )}
                 </div>
             </div>
