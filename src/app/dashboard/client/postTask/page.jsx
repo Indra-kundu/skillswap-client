@@ -15,7 +15,7 @@ const PostTask = () => {
         // সেশন থেকে ইমেইল সেট করা
         taskData.client_email = session?.user?.email;
         taskData.client_name = session?.user?.name; // নাম যোগ করলাম
-
+        taskData.status = "Open";
         try {
             const result = await Task(taskData);
             console.log("Result:", result);

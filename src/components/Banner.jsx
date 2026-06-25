@@ -40,9 +40,9 @@ const Banner = () => {
                             Post a Task
                         </Button>
                     </Link>
-                    <Button as={Link} href="/tasks" variant="bordered" radius="full" size="lg" className="px-8 text-white border-white hover:bg-white/10">
+                    <Link href={"/browseTask"}><Button variant="bordered" radius="full" size="lg" className="px-8 text-white border-white hover:bg-white/10">
                         Browse Tasks
-                    </Button>
+                    </Button></Link>
                 </motion.div>
             </div>
         </section>

@@ -55,7 +55,7 @@ const Navbar = () => {
                 {/* Links */}
                 <nav className="hidden md:flex items-center gap-6 text-white">
                     <Link href="/">Home</Link>
-                    <Link href="/dashboard/client/myTask">Browse Tasks</Link>
+                    <Link href="/browseTask">Browse Tasks</Link>
                     <Link href="/freelancers">Browse Freelancers</Link>
                 </nav>
 
