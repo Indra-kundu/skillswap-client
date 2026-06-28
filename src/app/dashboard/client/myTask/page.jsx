@@ -72,6 +72,8 @@ export default function MyTaskPage() {
             console.error("Delete Error:", error);
         }
     };
+
+
     if (loading) return <div className="text-center mt-10">Loading your tasks...</div>;
 
     return (

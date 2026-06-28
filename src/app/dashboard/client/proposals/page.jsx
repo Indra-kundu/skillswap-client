@@ -22,6 +22,7 @@ export default function ProposalsPage() {
     }, [email]);
 
     const handleAccept = (proposal) => {
+        console.log("Proposal object:", proposal); // এখানে দেখুন task_id আছে কি না
         // পেমেন্ট পেজে রিডাইরেক্ট এবং ডাটা পাঠানো
         router.push(`/payment/checkout?proposalId=${proposal._id}&taskId=${proposal.task_id}&price=${proposal.budget}&freelancer=${proposal.freelancer_email}`);
     };
@@ -53,9 +54,9 @@ export default function ProposalsPage() {
                     ) : (
                         <div className="overflow-x-auto">
                             <table className="w-full text-left border-collapse">
-                                {/* টেবিলের বাকি অংশ ঠিক থাকবে */}
                                 <thead>
                                     <tr className="bg-gray-100">
+                                        <th className="p-3 border">Task Title</th>
                                         <th className="p-3 border">Freelancer</th>
                                         <th className="p-3 border">Budget</th>
                                         <th className="p-3 border">Message</th>
@@ -65,16 +66,13 @@ export default function ProposalsPage() {
                                 <tbody>
                                     {proposals.map(p => (
                                         <tr key={p._id} className="border-b">
+                                            <td className="p-3">{p.task_title || "N/A"}</td>
                                             <td className="p-3">{p.freelancer_name}</td>
                                             <td className="p-3">${p.budget}</td>
                                             <td className="p-3">{p.note}</td>
                                             <td className="p-3 flex gap-2">
-                                                <button
-                                                    onClick={() => handleAccept(p)}
-                                                    className="bg-green-500 text-white px-3 py-1 rounded">Accept</button>
-                                                <button
-                                                    onClick={() => handleReject(p._id)}
-                                                    className="bg-red-500 text-white px-3 py-1 rounded">Reject</button>
+                                                <button onClick={() => handleAccept(p)} className="bg-green-500 text-white px-3 py-1 rounded">Accept</button>
+                                                <button onClick={() => handleReject(p._id)} className="bg-red-500 text-white px-3 py-1 rounded">Reject</button>
                                             </td>
                                         </tr>
                                     ))}

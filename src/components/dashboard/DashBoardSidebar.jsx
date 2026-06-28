@@ -42,9 +42,9 @@ export default async function DashBoardSidebar() {
 
         freelancer: [
             { icon: House, label: "Overview", link: "/dashboard/freelancer" },
-            { icon: Magnifier, label: "Browse Task", link: "/dashboard/freelancer/browseTask" },
-            { icon: Check, label: "My Proposals", link: "/dashboard/freelancer/myProposals" },
-            { icon: Briefcase, label: "Active Projects", link: "/dashboard/freelancer/activeProjects" },
+            { icon: Magnifier, label: "Browse Task", link: "/dashboard/freelancer/browse-tasks" },
+            { icon: Check, label: "My Proposals", link: "/dashboard/freelancer/my-proposal" },
+            { icon: Briefcase, label: "Active Projects", link: "/dashboard/freelancer/active-task" },
             { icon: FileDollar, label: "Earnings", link: "/dashboard/freelancer/earnings" },
             { icon: Gear, label: "Edit Profile", link: "/dashboard/freelancer/edit-profile" },
         ],
